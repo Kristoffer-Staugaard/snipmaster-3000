@@ -1,14 +1,16 @@
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SnipMaster 3000</title>
 	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 	<link rel="manifest" href="manifest.json">
 	<meta name="theme-color" content="#2c3e50">
-	<link rel="icon"type="image/png"href="icons/icon-192.png">
+	<link rel="icon" type="image/png" href="icons/icon-192.png">
 </head>
+
 <body>
 	<div class="app">
 		<!-- Sidebar -->
@@ -36,14 +38,17 @@
 
 			<div class="editor-container">
 				<textarea placeholder="Type your code here..." id="codeEditor"></textarea>
-				<div id="codePreview"class="code-preview"></div>
+				<div id="codePreview" class="code-preview"></div>
 			</div>
 		</main>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-		
+
 	<script src="scripts/app.js"></script>
-	
+
+	<div id="connection-status"style="position: fixed; bottom: 10px;right: 10px; background: white; padding: 5px 10px;
+		border-radius: 4px;box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 14px;">⚪ Checking...</div>
 </body>
+
 </html>

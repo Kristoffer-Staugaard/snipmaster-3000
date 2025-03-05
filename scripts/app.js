@@ -25,15 +25,15 @@ function registerServiceWorker() {
 function showServiceWorkerStatus(message, isError = false) {
     // Create a status element if it doesn't exist
     let statusElement = document.getElementById('sw-status');
-    if (!statusElement) { 
+    if (!statusElement) {
         statusElement = document.createElement('div');
         statusElement.id = 'sw-status';
         document.body.appendChild(statusElement);
     }
     // Style based on status  
-    statusElement.className = isError ? 'sw-status error' : 'sw-status-success'; 
+    statusElement.className = isError ? 'sw-status error' : 'sw-status-success';
     statusElement.textContent = message;
-    
+
     // Auto-hide after 3 seconds  
     setTimeout(() => { statusElement.style.opacity = '0'; }, 3000);
 }
@@ -231,3 +231,19 @@ function loadSnippet(id) {
     // ... existing loadSnippet code ...
     updatePreview();
 }
+
+// Add simple connection status indicator
+function updateConnectionStatus() {
+    const statusElement = document.getElementById('connection-status');
+    if (!statusElement)
+        return;
+    if (navigator.onLine) {
+        statusElement.innerHTML = "🟢 Online";
+        statusElement.style.backgroundColor = "#f1fff0";
+    } else { statusElement.innerHTML = "🔴 Offline"; statusElement.style.backgroundColor = "#fff0f0"; }
+};
+// Update status when online/offline events occur
+window.addEventListener('online', updateConnectionStatus);
+window.addEventListener('offline', updateConnectionStatus);
+// Initial check 
+document.addEventListener('DOMContentLoaded', updateConnectionStatus);
