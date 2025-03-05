@@ -198,7 +198,8 @@ body {
   gap: 20px;
 }
 
-#codeEditor, .code-preview {
+#codeEditor,
+.code-preview {
   flex: 1;
   height: 100%;
 }
@@ -218,4 +219,25 @@ body {
 .code-previewcode {
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
+}
+
+/* Add to your styles.css */
+.sw-status {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px20px;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  transition: opacity 0.5s ease;
+  z-index: 1000;
+}
+
+.sw-status.success {
+  background-color: #2ecc71;
+}
+
+.sw-status.error {
+  background-color: #e74c3c;
 }
