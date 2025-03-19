@@ -365,3 +365,70 @@ function createSnippetFromFile({ name, language, code }) {
     }
 }
 
+// Handle protocol invocation
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if we were launched via protocol
+    const urlParams = new URLSearchParams(window.location.search);
+    const snippetId = urlParams.get('snippet');
+    
+    if (snippetId) {
+      // Try to load the snippet by ID
+      loadSnippetById(snippetId);
+    }
+    
+    // Handle the "new" parameter
+    if (urlParams.has('new') && urlParams.get('new') === 'true') {
+      // Create a new snippet
+      document.getElementById('newSnippetBtn')?.click();
+    }
+    
+    // Handle the "filter" parameter
+    if (urlParams.has('filter')) {
+      const filter = urlParams.get('filter');
+      if (filter === 'recent') {
+        displayRecentSnippets();
+      }
+    }
+  });
+  
+  // Function to load snippet by ID
+  function loadSnippetById(id) {
+    // Get snippets from localStorage
+    const snippets = JSON.parse(localStorage.getItem('snippets') || '[]');
+    
+    // Find the snippet
+    const snippet = snippets.find(s => s.id === id);
+    
+    if (snippet) {
+      // Load it into the editor
+      loadSnippet(id);
+    } else {
+      showError(`Snippet not found: ${id}`);
+    }
+  }
+  
+  // Display recent snippets
+  function displayRecentSnippets() {
+    const snippets = JSON.parse(localStorage.getItem('snippets') || '[]');
+    
+    // Sort by last modified date, newest first
+    const recentSnippets = [...snippets]
+      .sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified))
+      .slice(0, 5); // Get top 5
+    
+    // Highlight these in the UI
+    // This depends on your specific UI implementation
+    highlightSnippets(recentSnippets.map(s => s.id));
+  }
+  
+  // Highlight snippets in the list
+  function highlightSnippets(ids) {
+    document.querySelectorAll('.snippet-item').forEach(item => {
+      if (ids.includes(item.dataset.id)) {
+        item.classList.add('highlighted');
+      } else {
+        item.classList.remove('highlighted');
+      }
+    });
+  }
+  
