@@ -1,3 +1,11 @@
+/**
+ * Service Worker Registration Module
+ * 
+ * This module handles the registration and management of the service worker,
+ * which enables offline functionality and caching for the application.
+ * It also provides visual feedback about the service worker's status to the user.
+ */
+
 // Service Worker Registration
 export function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
@@ -18,7 +26,11 @@ export function registerServiceWorker() {
     }
 }
 
-// Status display function
+/**
+ * Displays a status message about the service worker's state
+ * @param {string} message - The message to display
+ * @param {boolean} isError - Whether the message is an error
+ */
 function showServiceWorkerStatus(message, isError = false) {
     let statusElement = document.getElementById('sw-status');
     if (!statusElement) {

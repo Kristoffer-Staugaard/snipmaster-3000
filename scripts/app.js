@@ -1,3 +1,12 @@
+/**
+ * Main Application Entry Point
+ * 
+ * This file serves as the main entry point for the SnipMaster 3000 application.
+ * It initializes all the necessary modules and sets up the core event listeners.
+ * The application is structured in a modular way, with each module handling a specific
+ * aspect of the application's functionality.
+ */
+
 // Import all modules
 import { registerServiceWorker } from './js/serviceWorker.js';
 import { SnippetManager } from './js/snippetManager.js';
@@ -7,7 +16,7 @@ import { PWAInstallation } from './js/pwaInstall.js';
 import { FileHandler } from './js/fileHandler.js';
 import { ProtocolHandler } from './js/protocolHandler.js';
 
-// Initialize service worker
+// Initialize service worker for offline functionality
 registerServiceWorker();
 
 // Initialize app when DOM is loaded
